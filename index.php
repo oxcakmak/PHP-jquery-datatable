@@ -10,7 +10,7 @@ $lang['t_datable_language_paginate_first'] = 'First';
 $lang['t_datable_language_paginate_previous'] = 'Previous';
 $lang['t_datable_language_paginate_next'] = 'Next';
 $lang['t_datable_language_paginate_last'] = 'Last';
-
+$lang['t_view_all'] = 'View All';
 echo '<!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +41,7 @@ echo '<!DOCTYPE html>
 <script type="text/javascript" src="path/to/bootstrap.min.js"></script>
 <script type="text/javascript" src="datatables/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="datatables/dataTables.bootstrap.min.js"></script>
-<script>
+<script>$.fn.dataTable.ext.errMode = "none";
 $("#data-table").DataTable({
     language: {
         info: "'.$lang['t_datable_language_info'].'",
@@ -74,6 +74,7 @@ $("#data-table").DataTable({
         var index = iDisplayIndex + 1;
         $("td:eq(0)",nRow).html(index);
         return nRow;
-     }
+     },
+     "lengthMenu": [[10, 50, 100, 500, 100, -1], [10, 50, 100, 500, 100, "'.$lang['t_view_all'].'"]]
 });
 </script>';
